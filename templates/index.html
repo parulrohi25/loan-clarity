@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Clarity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Loan Clarity</h1>
+            <p>Know exactly what your loan costs — down to the last rupee.</p>
+            <div class="nav">
+                <a href="/">EMI Calculator</a>
+                <a href="/compare">Compare Loans</a>
+                <a href="/predict">Predict Cost</a>
+            </div>
+            
+        </div>
+
+        <div class="card">
+            <h2>Loan Details</h2>
+            <form method="POST">
+                <div class="field">
+                    <label>Loan Amount</label>
+                    <input type="number" name="principal" required>
+                </div>
+                <div class="field">
+                    <label>Annual Interest Rate (%)</label>
+                    <input type="number" step="0.01" name="rate" required>
+                </div>
+                <div class="field">
+                    <label>Tenure (months)</label>
+                    <input type="number" name="tenure" required>
+                </div>
+                <button type="submit">Calculate</button>
+            </form>
+        </div>
+
+        {% if result %}
+        <div class="card">
+            <h2>Results</h2>
+            <div class="stat-row">
+                <span class="stat-label">Monthly EMI</span>
+                <span class="stat-value highlight">₹{{ result.emi }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Total Interest</span>
+                <span class="stat-value">₹{{ result.total_interest }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Total Payment</span>
+                <span class="stat-value">₹{{ result.total_payment }}</span>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if schedule %}
+        <div class="card">
+            <h2>Amortization Schedule</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Month</th><th>Interest Paid</th><th>Principal Paid</th><th>Balance</th></tr>
+                    {% for row in schedule %}
+                    <tr>
+                        <td>{{ row.month }}</td>
+                        <td>₹{{ row.interest_paid }}</td>
+                        <td>₹{{ row.principal_paid }}</td>
+                        <td>₹{{ row.balance }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

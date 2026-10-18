@@ -1,0 +1,305 @@
+/* ---------- Reset & base ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at 20% 0%, #eef2ff 0%, #f6f8fc 35%, #eef1f7 100%);
+    color: #1e2433;
+    min-height: 100vh;
+    padding: 50px 20px;
+    line-height: 1.5;
+}
+
+.page {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(90deg, #1a3c6e, #5b7fd1 60%, #8e6ee0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3c4f7c;
+    background: #ffffff;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid #e2e6ef;
+    transition: all 0.2s ease;
+}
+
+.nav a:hover {
+    border-color: transparent;
+    color: #fff;
+    background: linear-gradient(90deg, #1a3c6e, #5b7fd1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(26, 60, 110, 0.25);
+}
+
+/* ---------- Card ---------- */
+.card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(26, 60, 110, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1a3c6e, #5b7fd1, #8e6ee0);
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card h2, .card h3 {
+    color: #12203f;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #5b7fd1;
+    margin-top: 8px;
+    margin-bottom: 14px;
+    padding-top: 18px;
+    border-top: 1px dashed #dde3f0;
+}
+
+.card h3:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* ---------- Form ---------- */
+.field {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    color: #3c4357;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #e2e6ef;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fafbfc;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5b7fd1;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(91, 127, 209, 0.15);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+    background: linear-gradient(90deg, #1a3c6e, #5b7fd1);
+    background-size: 160% 100%;
+    background-position: 0% 0%;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-position 0.35s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 16px rgba(26, 60, 110, 0.25);
+}
+
+button:hover {
+    background-position: 100% 0%;
+    box-shadow: 0 8px 20px rgba(26, 60, 110, 0.35);
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+/* ---------- Results ---------- */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid #f2f3f7;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #12203f;
+}
+
+.stat-value.highlight {
+    font-size: 22px;
+    background: linear-gradient(90deg, #1a3c6e, #5b7fd1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ---------- Comparison side-by-side ---------- */
+.compare-results {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.compare-results .option-box {
+    flex: 1;
+    min-width: 260px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(26, 60, 110, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.compare-results .option-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(26, 60, 110, 0.16);
+}
+
+.option-box h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    background: linear-gradient(90deg, #1a3c6e, #5b7fd1);
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+/* ---------- Table ---------- */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(26, 60, 110, 0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+th:first-child, td:first-child {
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(90deg, #12203f, #1a3c6e);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    border-bottom: 1px solid #f2f3f7;
+    color: #333a4d;
+    transition: background 0.1s ease;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: #f3f6ff;
+}
